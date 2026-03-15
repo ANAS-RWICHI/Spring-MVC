@@ -26,5 +26,5 @@ public class Product {
     @Min(0)
     private double price;
     @Min(1)
-    private double quantity;
+    private int quantity;
 }

@@ -38,6 +38,7 @@ public class SpringMvcApplication {
                     .price(2500)
                     .quantity(15)
                     .build());
+            productRepo.findAll().forEach(p->{System.out.println(p.toString());});
         };
     }
 
