@@ -30,7 +30,7 @@ public class SecurityConfig {
                         .roles("USER")
                         .build(),
                 org.springframework.security.core.userdetails.User
-                        .withUsername("Anas")
+                        .withUsername("admin")
                         .password(passwordEncoder().encode("1234"))
                         .roles("ADMIN","USER")
                         .build()
@@ -45,6 +45,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests(ar->ar.requestMatchers("/addProduct").hasRole("ADMIN"))
                 .authorizeHttpRequests(ar->ar.requestMatchers("/saveProduct").hasRole("ADMIN"))
                 .authorizeHttpRequests(ar->ar.anyRequest().authenticated())
+                .exceptionHandling(e->e.accessDeniedPage("/notAuthorized"))
                 .build();
     }
 }

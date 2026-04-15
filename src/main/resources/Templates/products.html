@@ -2,6 +2,7 @@
 <html lang="en"
       xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
       layout:decorate="~{layout}">
 <head>
     <meta charset="UTF-8">
@@ -19,8 +20,8 @@
             <th>Name</th>
             <th>Price</th>
             <th>Quantity</th>
-            <th>Actions</th>
-            <th><a class="btn btn-primary" th:href="@{/addProduct}">new Product </a></th>
+            <th sec:authorize="hasRole('ADMIN')">Actions</th>
+            <th sec:authorize="hasRole('ADMIN')"><a class="btn btn-primary" th:href="@{/addProduct}">new Product </a></th>
         </tr>
         </thead>
         <tbody>
@@ -29,7 +30,7 @@
             <td th:text="${product.name}"></td>
             <td th:text="${product.price}"></td>
             <td th:text="${product.quantity}"></td>
-            <td>
+            <td sec:authorize="hasRole('ADMIN')">
                 <a class="btn btn-primary btn-sm"
                    th:href="@{/edit(id=${product.id})}">Edit</a>
                 <a class="btn btn-danger btn-sm"

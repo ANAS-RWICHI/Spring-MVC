@@ -42,4 +42,7 @@ public class ProductController {
         productRepo.save(product);
         return "redirect:/index";
     }
+    @GetMapping("/notAuthorized")
+    public String notAuthorized() {
+        return "notAuthorized";}
 }
